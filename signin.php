@@ -28,7 +28,7 @@ Password: <input type="password" name="user_pass">
 1. Check the data
 2. Let the user refill the wrong fields (if necessary)
 3. Varify if the data is correct and return the correct response
-*/
+		*/
 
 		$errors = array(); /* declare the array for later use */
 		if(!isset($_POST['user_name']))
