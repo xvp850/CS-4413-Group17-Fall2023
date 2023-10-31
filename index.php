@@ -1,6 +1,6 @@
 <?php
 
-//create_cat.php
+//index.php
 
 include 'connect.php';
 
