@@ -10,11 +10,11 @@ cat_description
 FROM 
 categories 
 WHERE 
-cat_id = " . mysqli_real_escape_string($conn, $_GET['id']);
-$result = mysqli_query($conn, $sql);
+cat_id = " . mysqli_real_escape_string($db_connection, $_GET['id']);
+$result = mysqli_query($db_connection, $sql);
 if(!$result)
 {
-    echo 'The category could not be displayed, please try again later.' . mysqli_error($conn);
+    echo 'The category could not be displayed, please try again later.' . mysqli_error($db_connection);
 }
 else
 {
@@ -38,8 +38,8 @@ topic_cat
 FROM 
 topics 
 WHERE 
-topic_cat = " . mysqli_real_escape_string($conn, $_GET['id']);
-		$result = mysqli_query($conn, $sql);
+topic_cat = " . mysqli_real_escape_string($db_connection, $_GET['id']);
+		$result = mysqli_query($db_connection, $sql);
 		if(!$result)
 		{
 			echo 'The topics could not be displayed, please try again later.';
