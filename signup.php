@@ -6,8 +6,6 @@ include 'connect.php';
 include 'header.php';
 
 echo '<h3>Sign up</h3>';
-error_reporting(E_ALL);
-ini_set('display_errors', 1);
 
 if($_SERVER['REQUEST_METHOD'] != 'POST')
 {
@@ -96,7 +94,7 @@ else
 		{
 			//something went wrong, display the error
 			echo 'Something went wrong while registering. Please try again later.';
-			echo mysqli_error($db_connection); // Display the mysqli error //debugging purposes, uncomment when needed
+			//echo mysqli_error($db_connection); // Display the mysqli error //debugging purposes, uncomment when needed
 		}
 		else
 		{

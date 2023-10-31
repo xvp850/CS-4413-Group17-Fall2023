@@ -4,8 +4,6 @@ include 'connect.php';
 include 'header.php';
 
 echo '<h3>Sign in</h3>';
-error_reporting(E_ALL);
-ini_set('display_errors', 1);
 
 //first, check if the user is already signed in. If that is the case, there is no need to display this page
 if(isset($_SESSION['signed_in']) && $_SESSION['signed_in'] == true)
@@ -70,7 +68,7 @@ else
 				//something went wrong, display the error
 				echo 'Something went wrong while signing in. Please try again later.';
 				//echo mysql_error(); //debugging purposes, uncomment when needed
-				echo mysqli_error($db_connection); // Display the mysqli error
+				//echo mysqli_error($db_connection); // Display the mysqli error
 			}
 			else
 			{
