@@ -28,7 +28,7 @@
  	        }
  	        else
  	        {
- 		        echo '<a href="./signin.php">Sign in</a> or <a href="signup.php">create an account</a>.';
+ 		        echo '<a href="signin.php">Sign in</a> or <a href="signup.php">create an account</a>.';
  	        }
             ?>
         </div>
