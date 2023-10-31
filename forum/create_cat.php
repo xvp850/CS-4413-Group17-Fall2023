@@ -17,14 +17,14 @@ Category description: <textarea name='cat_description'></textarea>
     $sql = "INSERT INTO categories (cat_name, cat_description) 
 VALUES (?, ?)";
     // Create a prepared statement 
-    $stmt = mysqli_prepare($conn, $sql);
+    $stmt = mysqli_prepare($db_connection, $sql);
     // Bind parameters to the prepared statement 
     mysqli_stmt_bind_param($stmt, 'ss', $cat_name, $cat_description);
     // Execute the prepared statement 
     $result = mysqli_stmt_execute($stmt);
     if (!$result) {
         // Something went wrong, display the error 
-        echo 'Error: ' . mysqli_error($conn);
+        echo 'Error: ' . mysqli_error($db_connection);
     } else {
         echo 'New category successfully added.';
     }
