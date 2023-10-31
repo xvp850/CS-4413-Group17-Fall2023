@@ -15,21 +15,20 @@ else
     if($_SERVER['REQUEST_METHOD'] != 'POST')
 	{
 		/*the form hasn't been posted yet, display it
-note that the action="" will cause the form to post to the same page it is on */
+		note that the action="" will cause the form to post to the same page it is on */
 		echo '<form method="post" action="">
-Username: <input type="text" name="user_name" />
-Password: <input type="password" name="user_pass">
-<input type="submit" value="Sign in" />
-</form>';
+		Username: <input type="text" name="user_name" />
+		Password: <input type="password" name="user_pass">
+		<input type="submit" value="Sign in" />
+		</form>';
 	}
 	else
 	{
 		/* so, the form has been posted, we'll process the data in three steps:
-1. Check the data
-2. Let the user refill the wrong fields (if necessary)
-3. Varify if the data is correct and return the correct response
-*/
-
+		1. Check the data
+		2. Let the user refill the wrong fields (if necessary)
+		3. Varify if the data is correct and return the correct response
+		*/
 		$errors = array(); /* declare the array for later use */
 		if(!isset($_POST['user_name']))
 		{
@@ -56,11 +55,10 @@ Password: <input type="password" name="user_pass">
 			//the form has been posted without errors, so save it
 			//notice the use of mysql_real_escape_string, keep everything safe!
 			//also notice the sha1 function which hashes the password
-
 			$sql = "SELECT user_id, user_name, user_level FROM users WHERE user_name = ? AND user_pass = ?";
-            $stmt = mysqli_prepare($conn, $sql);
-            mysqli_stmt_bind_param($stmt, 'ss', $_POST['user_name'], sha1($_POST['user_pass']));
-            $result = mysqli_stmt_execute($stmt);
+            		$stmt = mysqli_prepare($conn, $sql);
+            		mysqli_stmt_bind_param($stmt, 'ss', $_POST['user_name'], sha1($_POST['user_pass']));
+            		$result = mysqli_stmt_execute($stmt);
 
 			if(!$result)
 			{
@@ -70,11 +68,10 @@ Password: <input type="password" name="user_pass">
 			}
 			else
 			{
-				//the query was successfully executed, there are 2 possibilities
-				//1. the query returned data, the user can be signed in
-				//2. the query returned an empty result set, the credentials were wrong
-
-                $result = mysqli_stmt_get_result($stmt);
+			//the query was successfully executed, there are 2 possibilities
+			//1. the query returned data, the user can be signed in
+			//2. the query returned an empty result set, the credentials were wrong
+                	$result = mysqli_stmt_get_result($stmt);
 
 				if (mysqli_num_rows($result) == 0) {
 				{
@@ -96,8 +93,6 @@ Password: <input type="password" name="user_pass">
 				}
 			}
 		}
-	}
-}
 	}
 }
 
