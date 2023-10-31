@@ -3,6 +3,9 @@
 include 'connect.php';
 include 'header.php';
 // first select the category based on $_GET['cat_id'] 
+error_reporting(E_ALL);
+ini_set('display_errors', 1);
+
 $sql = "SELECT 
 cat_id, 
 cat_name, 

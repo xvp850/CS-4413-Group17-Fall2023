@@ -1,7 +1,8 @@
 <?php
 include 'connect.php';
 include 'header.php';
-
+error_reporting(E_ALL);
+ini_set('display_errors', 1);
 if ($_SERVER['REQUEST_METHOD'] != 'POST') {
     // The form hasn't been posted yet, display it 
     echo "<form method='post' action=''> 

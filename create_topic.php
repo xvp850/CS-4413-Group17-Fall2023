@@ -2,6 +2,8 @@
 //create_cat.php 
 include 'connect.php';
 include 'header.php';
+error_reporting(E_ALL);
+ini_set('display_errors', 1);
 echo '<h2>Create a topic</h2>';
 if($_SESSION['signed_in'] == false)
 {
