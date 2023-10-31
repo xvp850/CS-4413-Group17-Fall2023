@@ -8,7 +8,7 @@ cat_name,
 cat_description 
 FROM 
 categories";
-$result = mysqli_query($conn, $sql);
+$result = mysqli_query($db_connection, $sql);
 if (!$result) {
     echo 'The categories could not be displayed, please try again later.';
 } else {
