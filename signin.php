@@ -98,6 +98,8 @@ Password: <input type="password" name="user_pass">
 		}
 	}
 }
+	}
+}
 
 include 'footer.php';
 ?>
