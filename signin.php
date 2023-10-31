@@ -10,7 +10,7 @@ if(isset($_SESSION['signed_in']) && $_SESSION['signed_in'] == true)
 {
     echo 'You are already signed in, you can <a href="signout.php">sign out</a> if you want.';
 }
-echo 'youre already signed in';
+
 else
 {
     if($_SERVER['REQUEST_METHOD'] != 'POST')
@@ -23,7 +23,7 @@ else
 		<input type="submit" value="Sign in" />
 		</form>';
 	}
-	echo 'not posted';
+	
 	else
 	{
 		/* so, the form has been posted, we'll process the data in three steps:
@@ -52,7 +52,7 @@ else
 			}
 			echo '</ul>';
 		}
-		echo 'data processed';
+		
 		else
 		{
 			//the form has been posted without errors, so save it
