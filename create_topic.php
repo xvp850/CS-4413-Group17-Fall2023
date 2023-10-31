@@ -6,7 +6,7 @@ echo '<h2>Create a topic</h2>';
 if($_SESSION['signed_in'] == false)
 {
     //the user is not signed in 
-    echo 'Sorry, you have to be <a href="/forum/signin.php">signed in</a> to create a topic.';
+    echo 'Sorry, you have to be <a href="/signin.php">signed in</a> to create a topic.';
 }
 else
 {
