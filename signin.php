@@ -61,7 +61,7 @@ else
 			//notice the use of mysql_real_escape_string, keep everything safe!
 			//also notice the sha1 function which hashes the password
 			$sql = "SELECT user_id, user_name, user_level FROM users WHERE user_name = ? AND user_pass = ?";
-            		$stmt = mysqli_prepare($conn, $sql);
+            		$stmt = mysqli_prepare($db_connection, $sql);
             		mysqli_stmt_bind_param($stmt, 'ss', $_POST['user_name'], sha1($_POST['user_pass']));
             		$result = mysqli_stmt_execute($stmt);
 
@@ -70,7 +70,7 @@ else
 				//something went wrong, display the error
 				echo 'Something went wrong while signing in. Please try again later.';
 				//echo mysql_error(); //debugging purposes, uncomment when needed
-				echo mysqli_error($conn); // Display the mysqli error
+				echo mysqli_error($db_connection); // Display the mysqli error
 			}
 			else
 			{
