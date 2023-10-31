@@ -6,21 +6,45 @@ include 'connect.php';
 
 include 'header.php';
 
-echo '<tr>';
+$sql = "SELECT 
+cat_id, 
+cat_name, 
+cat_description 
+FROM 
+categories";
+$result = mysqli_query($db_connection, $sql);
+if (!$result) {
+    echo 'The categories could not be displayed, please try again later.';
+} else {
+    if (mysqli_num_rows($result) == 0) {
+        echo 'No categories defined yet.';
+    } else {
+        // Prepare the table 
+        echo '<table border="1"> 
+<tr> 
+<th>Category</th> 
+<th>Last topic</th> 
+</tr>';
 
-	echo '<td class="leftpart">';
+		while($row = mysqli_fetch_assoc($result)){
+			echo '<tr>';
 
-		echo '<h3><a href="category.php?id=">Category name</a></h3> Category description goes here';
+			echo '<td class="leftpart">';
 
-	echo '</td>';
+			echo '<h3><a href="category.php?id=">Category name</a></h3> Category description goes here';
 
-	echo '<td class="rightpart">';				
+			echo '</td>';
+
+			echo '<td class="rightpart">';				
 
 			echo '<a href="topic.php?id=">Topic subject</a> at 10-10';
 
-	echo '</td>';
+			echo '</td>';
 
-echo '</tr>';
+			echo '</tr>';
+		}
+	}
+}
 
 include 'footer.php';
 
