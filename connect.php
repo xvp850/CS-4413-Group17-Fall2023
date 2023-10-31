@@ -8,7 +8,7 @@ $username = 'xvp850';
 
 $password = 'Mypassword1';
 
-$database = 'CS4413-Group17-Database';
+$database = 'cs4413-group17-database';
 
 $db_connection = mysqli_connect($server, $username, $password, $database);
 
