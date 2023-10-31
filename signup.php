@@ -94,7 +94,7 @@ else
 		{
 			//something went wrong, display the error
 			echo 'Something went wrong while registering. Please try again later.';
-			echo mysql_error(); //debugging purposes, uncomment when needed
+			echo mysqli_error($conn); // Display the mysqli error //debugging purposes, uncomment when needed
 		}
 		else
 		{
