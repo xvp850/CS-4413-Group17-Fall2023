@@ -84,7 +84,7 @@ else
         $sql = "INSERT INTO users(user_name, user_pass, user_email, user_date, user_level) VALUES (?, ?, ?, NOW(), 0)";
 
         // Create a prepared statement
-        $stmt = mysqli_prepare($conn, $sql);
+        $stmt = mysqli_prepare($db_connection, $sql);
 
         // Bind parameters to the prepared statement
         mysqli_stmt_bind_param($stmt, 'sss', $_POST['user_name'], sha1($_POST['user_pass']), $_POST['user_email']);
@@ -96,7 +96,7 @@ else
 		{
 			//something went wrong, display the error
 			echo 'Something went wrong while registering. Please try again later.';
-			echo mysqli_error($conn); // Display the mysqli error //debugging purposes, uncomment when needed
+			echo mysqli_error($db_connection); // Display the mysqli error //debugging purposes, uncomment when needed
 		}
 		else
 		{
