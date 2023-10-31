@@ -2,7 +2,7 @@
 
 //create_cat.php
 
-//include 'connect.php';
+include 'connect.php';
 
 include 'header.php';
 
