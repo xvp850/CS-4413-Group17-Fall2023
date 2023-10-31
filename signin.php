@@ -73,7 +73,7 @@ else
 			//2. the query returned an empty result set, the credentials were wrong
                 	$result = mysqli_stmt_get_result($stmt);
 
-				if (mysqli_num_rows($result) == 0) {
+				if (mysqli_num_rows($result) == 0)
 				{
 					echo 'You have supplied a wrong user/password combination. Please try again.';
 				}
@@ -83,7 +83,7 @@ else
 					$_SESSION['signed_in'] = true;
 
 					//we also put the user_id and user_name values in the $_SESSION, so we can use it at various pages
-					while ($row = mysqli_fetch_assoc($result)) {
+					while ($row = mysqli_fetch_assoc($result))
 					{
 						$_SESSION['user_id'] 	= $row['user_id'];
 						$_SESSION['user_name'] 	= $row['user_name'];
