@@ -22,6 +22,7 @@
 		<div id="userbar">
         <div id="userbar">
             <?php
+			session_start();
             if($_SESSION['signed_in'])
  	        {
  	 	        echo 'Hello' . $_SESSION['user_name'] . '. Not you? <a href="signout.php">Sign out</a>';
