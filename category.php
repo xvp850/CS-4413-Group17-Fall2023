@@ -17,7 +17,7 @@ if ($stmt) {
 
     mysqli_stmt_execute($stmt);
 
-    $result = mysqli_stmt_get_result($stmt);
+    $result = mysqli_query($stmt);
 
     while ($row = mysqli_fetch_assoc($result)) {
         // Fetch data from the result and use it as needed
