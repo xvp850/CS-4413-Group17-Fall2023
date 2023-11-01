@@ -13,7 +13,7 @@ cat_description
 FROM 
 categories 
 WHERE 
-cat_id = . mysqli_real_escape_string($db_connection, $_GET['id']);"
+cat_id = mysqli_real_escape_string($db_connection, $_GET['id']);"
 $result = mysqli_query($db_connection, $sql);
 if(!$result)
 {
