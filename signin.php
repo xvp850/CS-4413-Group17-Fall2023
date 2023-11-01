@@ -62,7 +62,13 @@ else
 			//also notice the sha1 function which hashes the password
 			$sql = "SELECT user_id, user_name, user_level FROM users WHERE user_name = ? AND user_pass = ?";
             		$stmt = mysqli_prepare($db_connection, $sql);
-            		mysqli_stmt_bind_param($stmt, 'ss', $_POST['user_name'], sha1($_POST['user_pass']));
+            		if ($stmt) {
+						// Bind parameters using variables
+						$username = $_POST['user_name'];
+						$password = sha1($_POST['user_pass']); // Hash the password
+					
+						mysqli_stmt_bind_param($stmt, 'ss', $username, $password);
+					}
             		$result = mysqli_stmt_execute($stmt);
 
 			if(!$result)
