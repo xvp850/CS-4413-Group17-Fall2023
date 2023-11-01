@@ -6,15 +6,26 @@ include 'header.php';
 error_reporting(E_ALL);
 ini_set('display_errors', 1);
 
-$sql = "SELECT 
-cat_id, 
-cat_name, 
-cat_description 
-FROM 
-categories 
-WHERE 
-cat_id = mysqli_real_escape_string($db_connection, $_GET['id'])";
-$result = mysqli_query($db_connection, $sql);
+$sql = "SELECT cat_id, cat_name, cat_description 
+        FROM categories 
+        WHERE cat_id = ?";
+
+$stmt = mysqli_prepare($db_connection, $sql);
+
+if ($stmt) {
+    mysqli_stmt_bind_param($stmt, 'i', $id); // Assuming cat_id is an integer, use 'i' for integers
+
+    mysqli_stmt_execute($stmt);
+
+    $result = mysqli_stmt_get_result($stmt);
+
+    while ($row = mysqli_fetch_assoc($result)) {
+        // Fetch data from the result and use it as needed
+        echo "Category ID: " . $row['cat_id'] . "<br>";
+        echo "Category Name: " . $row['cat_name'] . "<br>";
+        echo "Category Description: " . $row['cat_description'] . "<br>";
+    }
+}
 if(!$result)
 {
     echo 'The category could not be displayed, please try again later.' . mysqli_error($db_connection);
