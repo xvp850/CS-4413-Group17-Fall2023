@@ -21,17 +21,15 @@
 		<a class="item" href="create_cat.php">Create a category</a>
 		<div id="userbar">
         <div id="userbar">
-            <?php
+			<?php
 			session_start();
-            if($_SESSION['signed_in'])
- 	        {
- 	 	        echo 'Hello' . $_SESSION['user_name'] . '. Not you? <a href="signout.php">Sign out</a>';
- 	        }
- 	        else
- 	        {
- 		        echo '<a href="signin.php">Sign in</a> or <a href="signup.php">create an account</a>.';
- 	        }
-            ?>
+			
+			if (isset($_SESSION['signed_in']) && $_SESSION['signed_in'] == true) {
+				echo 'Hello, ' . $_SESSION['user_name'] . '. Not you? <a href="signout.php">Sign out</a>';
+			} else {
+				echo '<a href="signin.php">Sign in</a> or <a href="signup.php">create an account</a>.';
+			}
+			?>
         </div>
 	</div>
 		<div id="content">
