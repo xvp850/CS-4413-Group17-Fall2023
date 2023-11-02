@@ -26,7 +26,7 @@ cat_name,
 cat_description 
 FROM 
 categories";
-        $result = mysqli_query($link, $sql);
+        $result = mysqli_query($db_connection, $sql);
 		if(!$result)
 		{
 			//the query failed, uh-oh :-( 
