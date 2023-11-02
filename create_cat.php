@@ -1,4 +1,5 @@
 <?php
+session_start();
 include 'connect.php';
 include 'header.php';
 error_reporting(E_ALL);
