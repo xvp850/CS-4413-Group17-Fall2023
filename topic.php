@@ -18,7 +18,7 @@ if (isset($_GET['id'])) {
             FROM 
                 topics 
             WHERE 
-                topic_cat = ?";
+                topic_cat = $id";
 
     $stmt = mysqli_prepare($db_connection, $sql);
 
