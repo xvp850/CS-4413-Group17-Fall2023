@@ -65,10 +65,10 @@ Category:';
 	}
 	else
 	{
-        mysqli_begin_transaction($link);
+        mysqli_begin_transaction($db_connection);
 		//start the transaction 
 		$query = "BEGIN WORK;";
-        $result = mysqli_query($link, $query);
+        $result = mysqli_query($db_connection, $query);
 		if(!$result)
 		{
 			//Damn! the query failed, quit 
@@ -76,8 +76,8 @@ Category:';
 		}
 		else
 		{
-            $topic_subject = mysqli_real_escape_string($link, $_POST['topic_subject']);
-            $topic_cat = mysqli_real_escape_string($link, $_POST['topic_cat']);
+            $topic_subject = mysqli_real_escape_string($db_connection, $_POST['topic_subject']);
+            $topic_cat = mysqli_real_escape_string($db_connection, $_POST['topic_cat']);
             $topic_by = $_SESSION['user_id'];
 			//the form has been posted, so save it 
 			//insert the topic into the topics table first, then we'll save the post into the posts table 
@@ -91,20 +91,20 @@ NOW(),
 '$topic_cat', 
 '$topic_by' 
 )";
-            $result = mysqli_query($link, $sql);
+            $result = mysqli_query($db_connection, $sql);
 			if(!$result)
 			{
 				//something went wrong, display the error 
-				echo 'An error occurred while inserting your data. Please try again later.' . mysqli_error($link);
+				echo 'An error occurred while inserting your data. Please try again later.' . mysqli_error($db_connection);
                 $sql = "ROLLBACK;";
-                $result = mysqli_query($link, $sql);
+                $result = mysqli_query($db_connection, $sql);
 			}
 			else
 			{
 				//the first query worked, now start the second, posts query 
 				//retrieve the id of the freshly created topic for usage in the posts query 
-				$topicid = mysqli_insert_id($link);
-                $post_content = mysqli_real_escape_string($link, $_POST['post_content']);
+				$topicid = mysqli_insert_id($db_connection);
+                $post_content = mysqli_real_escape_string($db_connection, $_POST['post_content']);
                 $post_topic = $topicid;
                 $post_by = $_SESSION['user_id'];
 				$sql = "INSERT INTO 
@@ -118,18 +118,18 @@ NOW(),
 '$post_topic', 
 '$post_by' 
 )";
-                $result = mysqli_query($link, $sql);
+                $result = mysqli_query($db_connection, $sql);
 				if(!$result)
 				{
 					//something went wrong, display the error 
 					echo 'An error occured while inserting your post. Please try again later.' . mysql_error();
 					$sql = "ROLLBACK;";
-                    $result = mysqli_query($link, $sql);
+                    $result = mysqli_query($db_connection, $sql);
 				}
 				else
 				{
 					$sql = "COMMIT;";
-                    $result = mysqli_query($link, $sql);
+                    $result = mysqli_query($db_connection, $sql);
 					//after a lot of work, the query succeeded! 
 					echo 'You have successfully created <a href="topic.php?id='. $topicid . '">your new topic</a>.';
 				}
