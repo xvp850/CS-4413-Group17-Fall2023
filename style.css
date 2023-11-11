@@ -1,12 +1,11 @@
 body {
-	background-color: black;
+	background-color: #A9A9A9;
 	text-align: center; /* make sure IE centers the page too */
 }
 
 #wrapper {
 	width: 900px;
-	/* margin: 0 auto; */ /* center the page */
-	float: left !important;
+	margin: 0 auto; /* center the page */
 }
 
 #content {
