@@ -33,18 +33,11 @@ if (isset($_GET['id'])) {
                     echo "Category Description: " . $row['cat_description'] . "<br>";
                     echo '<h2>Topics in ′' . $row['cat_name'] . '′ category</h2>';
                 }
-            }
-        }
-    } else {
-        echo "Error in preparing the statement: " . mysqli_error($db_connection);
-    }
-} else {
-    echo "Debug: ID is not set or invalid.<br>";  // Add this line for debug
-    echo "Category ID is not set or invalid.";
-}
+            
+       
 
                 // Query for the topics in the category
-               /* $sql = "SELECT 
+                $sql = "SELECT 
                             topic_id, 
                             topic_subject, 
                             topic_date 
