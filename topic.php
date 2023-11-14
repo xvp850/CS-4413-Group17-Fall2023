@@ -60,5 +60,9 @@ if (isset($_GET['id']) && is_numeric($_GET['id'])) {
     echo "Topic ID is not set or invalid.";
 }
 
-include 'footer.php';
 ?>
+<form method="post" action="reply.php?id=<?php echo $_GET['id']; ?>">
+    <!-- Your form fields go here -->
+    <textarea name="reply-content"></textarea>
+    <input type="submit" value="Post Reply">
+</form>

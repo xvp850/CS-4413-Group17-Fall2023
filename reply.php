@@ -1,4 +1,5 @@
 <?php
+session_start();
 //create_cat.php 
 include 'connect.php';
 include 'header.php';
