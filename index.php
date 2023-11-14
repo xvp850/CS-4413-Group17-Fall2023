@@ -9,21 +9,11 @@ $sql = "SELECT
     c.cat_id, 
     c.cat_name, 
     c.cat_description,
-    t.topic_subject,
-    t.topic_date
+    (SELECT t.topic_subject FROM topics t WHERE t.topic_cat = c.cat_id ORDER BY t.topic_date DESC LIMIT 1) AS topic_subject,
+    (SELECT t.topic_date FROM topics t WHERE t.topic_cat = c.cat_id ORDER BY t.topic_date DESC LIMIT 1) AS topic_date
 FROM 
-    categories c
-LEFT JOIN (
-    SELECT 
-        topic_cat, 
-        topic_subject,
-        MAX(topic_date) AS max_date
-    FROM 
-        topics
-    GROUP BY 
-        topic_cat
-) latest_topics ON c.cat_id = latest_topics.topic_cat
-LEFT JOIN topics t ON t.topic_cat = c.cat_id AND t.topic_date = latest_topics.max_date";
+    categories c";
+    
 $result = mysqli_query($db_connection, $sql);
 if (!$result) {
     echo 'The categories could not be displayed, please try again later.';
