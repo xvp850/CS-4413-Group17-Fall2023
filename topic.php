@@ -1,68 +1,89 @@
 <?php
 session_start();
-
 include 'connect.php';
 include 'header.php';
-
-error_reporting(E_ALL);
-ini_set('display_errors', 1);
 
 if (isset($_GET['id']) && is_numeric($_GET['id'])) {
     $topic_id = $_GET['id'];
 
-    // Retrieve the topic information
+    // Fetch the topic information
     $topic_sql = "SELECT 
+                    topic_id, 
                     topic_subject, 
                     topic_date 
                 FROM 
                     topics 
                 WHERE 
-                    topic_id = $topic_id";
+                    topic_id = ?";
+    $topic_stmt = mysqli_prepare($db_connection, $topic_sql);
 
-    $topic_result = mysqli_query($db_connection, $topic_sql);
+    if ($topic_stmt) {
+        mysqli_stmt_bind_param($topic_stmt, 'i', $topic_id);
+        mysqli_stmt_execute($topic_stmt);
+        $topic_result = mysqli_stmt_get_result($topic_stmt);
 
-    if ($topic_result && mysqli_num_rows($topic_result) > 0) {
-        $topic_row = mysqli_fetch_assoc($topic_result);
+        if ($topic_result && $topic_row = mysqli_fetch_assoc($topic_result)) {
+            echo '<h2>' . $topic_row['topic_subject'] . '</h2>';
+            echo '<p>Created at ' . date('d-m-Y', strtotime($topic_row['topic_date'])) . '</p>';
 
-        echo '<h2>' . $topic_row['topic_subject'] . '</h2>';
-        echo '<p>Created at: ' . date('d-m-Y', strtotime($topic_row['topic_date'])) . '</p>';
+            // Fetch and display replies
+            $replies_sql = "SELECT 
+                                post_id, 
+                                post_content, 
+                                post_date 
+                            FROM 
+                                posts 
+                            WHERE 
+                                post_topic = ?";
+            $replies_stmt = mysqli_prepare($db_connection, $replies_sql);
 
-        // Retrieve and display posts for the selected topic
-        $posts_sql = "SELECT 
-                        post_content, 
-                        post_date 
-                    FROM 
-                        posts 
-                    WHERE 
-                        post_topic = $topic_id";
+            if ($replies_stmt) {
+                mysqli_stmt_bind_param($replies_stmt, 'i', $topic_id);
+                mysqli_stmt_execute($replies_stmt);
+                $replies_result = mysqli_stmt_get_result($replies_stmt);
 
-        $posts_result = mysqli_query($db_connection, $posts_sql);
+                if ($replies_result) {
+                    echo '<h3>Replies</h3>';
+                    echo '<table border="1"> 
+                            <tr> 
+                                <th>Reply</th> 
+                                <th>Created at</th> 
+                            </tr>';
 
-        if ($posts_result && mysqli_num_rows($posts_result) > 0) {
-            echo '<h3>Posts</h3>';
-            echo '<ul>';
+                    while ($reply_row = mysqli_fetch_assoc($replies_result)) {
+                        echo '<tr>';
+                        echo '<td class="leftpart">' . $reply_row['post_content'] . '</td>';
+                        echo '<td class="rightpart">' . date('d-m-Y', strtotime($reply_row['post_date'])) . '</td>';
+                        echo '</tr>';
+                    }
 
-            while ($post_row = mysqli_fetch_assoc($posts_result)) {
-                echo '<li>';
-                echo '<p>' . $post_row['post_content'] . '</p>';
-                echo '<p>Posted at: ' . date('d-m-Y', strtotime($post_row['post_date'])) . '</p>';
-                echo '</li>';
+                    echo '</table>';
+                } else {
+                    echo 'Error fetching replies: ' . mysqli_error($db_connection);
+                }
+            } else {
+                echo 'Error preparing statement for replies: ' . mysqli_error($db_connection);
             }
 
-            echo '</ul>';
+            // Display the reply form
+            if ($_SESSION['signed_in']) {
+                echo '<h3>Post a Reply</h3>';
+                echo '<form method="post" action="">
+                        <textarea name="reply-content"></textarea>
+                        <input type="submit" value="Post Reply">
+                    </form>';
+            } else {
+                echo 'You must be signed in to post a reply.';
+            }
         } else {
-            echo 'No posts for this topic yet.';
+            echo 'Topic not found.';
         }
     } else {
-        echo 'Topic not found.';
+        echo 'Error preparing statement for topic: ' . mysqli_error($db_connection);
     }
 } else {
-    echo "Topic ID is not set or invalid.";
+    echo 'Invalid topic ID.';
 }
 
+include 'footer.php';
 ?>
-<form method="post" action="reply.php">
-    <!-- Your form fields go here -->
-    <textarea name="reply-content"></textarea>
-    <input type="submit" value="Post Reply">
-</form>
