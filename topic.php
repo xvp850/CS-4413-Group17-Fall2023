@@ -3,6 +3,59 @@ session_start();
 include 'connect.php';
 include 'header.php';
 
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    // Check if it's a new topic or a reply
+    if (isset($_POST['post-content'])) {
+        // It's a new topic
+        $topic_subject = mysqli_real_escape_string($db_connection, $_POST['topic_subject']);
+        $topic_cat = mysqli_real_escape_string($db_connection, $_POST['topic_cat']);
+        $topic_by = $_SESSION['user_id'];
+
+        $sql = "INSERT INTO topics (topic_subject, topic_date, topic_cat, topic_by) 
+                VALUES ('$topic_subject', NOW(), '$topic_cat', '$topic_by')";
+
+        $result = mysqli_query($db_connection, $sql);
+
+        if (!$result) {
+            echo 'An error occurred while creating your topic. Please try again later.';
+        } else {
+            $topic_id = mysqli_insert_id($db_connection);
+
+            // Now, insert the post for the new topic
+            $post_content = mysqli_real_escape_string($db_connection, $_POST['post-content']);
+            $post_topic = $topic_id;
+            $post_by = $_SESSION['user_id'];
+
+            $sql = "INSERT INTO posts (post_content, post_date, post_topic, post_by) 
+                    VALUES ('$post_content', NOW(), '$post_topic', '$post_by')";
+
+            $result = mysqli_query($db_connection, $sql);
+
+            if (!$result) {
+                echo 'An error occurred while creating your post. Please try again later.';
+            } else {
+                echo 'You have successfully created your new topic and posted a reply.';
+            }
+        }
+    } elseif (isset($_POST['reply-content'])) {
+        // It's a reply
+        $post_content = mysqli_real_escape_string($db_connection, $_POST['reply-content']);
+        $post_topic = mysqli_real_escape_string($db_connection, $_POST['topic_id']);
+        $post_by = $_SESSION['user_id'];
+
+        $sql = "INSERT INTO posts (post_content, post_date, post_topic, post_by) 
+                VALUES ('$post_content', NOW(), '$post_topic', '$post_by')";
+
+        $result = mysqli_query($db_connection, $sql);
+
+        if (!$result) {
+            echo 'An error occurred while creating your reply. Please try again later.';
+        } else {
+            echo 'You have successfully posted a reply.';
+        }
+    }
+}
+
 if (isset($_GET['id']) && is_numeric($_GET['id'])) {
     $topic_id = $_GET['id'];
 
@@ -65,11 +118,12 @@ if (isset($_GET['id']) && is_numeric($_GET['id'])) {
                 echo 'Error preparing statement for replies: ' . mysqli_error($db_connection);
             }
 
-            // Display the reply form
+            // Display the combined reply form
             if ($_SESSION['signed_in']) {
                 echo '<h3>Post a Reply</h3>';
                 echo '<form method="post" action="">
                         <textarea name="reply-content"></textarea>
+                        <input type="hidden" name="topic_id" value="' . $topic_id . '">
                         <input type="submit" value="Post Reply">
                     </form>';
             } else {
@@ -87,3 +141,9 @@ if (isset($_GET['id']) && is_numeric($_GET['id'])) {
 
 include 'footer.php';
 ?>
+This code now handles both posting a new topic and posting replies within the same topic.php file. It uses different sections for creating a new
+
+
+
+
+
