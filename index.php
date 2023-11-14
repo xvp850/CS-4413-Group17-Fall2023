@@ -30,7 +30,11 @@ if (!$result) {
             echo '<h3><a href="category.php?id=' . $row['cat_id'] . '">' . $row['cat_name'] . '</a></h3>' . $row['cat_description'];
             echo '</td>';
             echo '<td class="rightpart">';
-            echo '<a href="topic.php?id=">Topic subject</a> at 10-10';
+            if ($row['topic_subject']) {
+                echo '<a href="topic.php?id=' . $row['cat_id'] . '">' . $row['topic_subject'] . '</a> at ' . date('d-m-Y', strtotime($row['topic_date']));
+            } else {
+                echo 'No topics in this category yet.';
+            }
             echo '</td>';
             echo '</tr>';
         }
