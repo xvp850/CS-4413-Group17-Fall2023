@@ -61,7 +61,7 @@ if (isset($_GET['id']) && is_numeric($_GET['id'])) {
 }
 
 ?>
-<form method="post" action="reply.php?id=<?php echo $_GET['id']; ?>">
+<form method="post" action="reply.php">
     <!-- Your form fields go here -->
     <textarea name="reply-content"></textarea>
     <input type="submit" value="Post Reply">
