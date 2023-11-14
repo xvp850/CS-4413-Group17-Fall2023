@@ -141,7 +141,6 @@ if (isset($_GET['id']) && is_numeric($_GET['id'])) {
 
 include 'footer.php';
 ?>
-This code now handles both posting a new topic and posting replies within the same topic.php file. It uses different sections for creating a new
 
 
 
