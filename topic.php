@@ -61,13 +61,17 @@ if (isset($_GET['id']) && is_numeric($_GET['id'])) {
 
     // Fetch the topic information
     $topic_sql = "SELECT 
-                    topic_id, 
-                    topic_subject, 
-                    topic_date 
+                    t.topic_id, 
+                    t.topic_subject, 
+                    t.topic_date, 
+                    u.user_id, 
+                    u.user_name 
                 FROM 
-                    topics 
+                    topics t
+                JOIN 
+                    users u ON t.topic_by = u.user_id
                 WHERE 
-                    topic_id = ?";
+                    t.topic_id = ?";
     $topic_stmt = mysqli_prepare($db_connection, $topic_sql);
 
     if ($topic_stmt) {
@@ -77,17 +81,21 @@ if (isset($_GET['id']) && is_numeric($_GET['id'])) {
 
         if ($topic_result && $topic_row = mysqli_fetch_assoc($topic_result)) {
             echo '<h2>' . $topic_row['topic_subject'] . '</h2>';
-            echo '<p>Created at ' . date('d-m-Y', strtotime($topic_row['topic_date'])) . '</p>';
+            echo '<p>Created at ' . date('d-m-Y', strtotime($topic_row['topic_date'])) . ' by ' . $topic_row['user_name'] . '</p>';
 
             // Fetch and display replies
             $replies_sql = "SELECT 
-                                post_id, 
-                                post_content, 
-                                post_date 
+                                p.post_id, 
+                                p.post_content, 
+                                p.post_date, 
+                                u.user_id, 
+                                u.user_name 
                             FROM 
-                                posts 
+                                posts p
+                            JOIN 
+                                users u ON p.post_by = u.user_id
                             WHERE 
-                                post_topic = ?";
+                                p.post_topic = ?";
             $replies_stmt = mysqli_prepare($db_connection, $replies_sql);
 
             if ($replies_stmt) {
@@ -101,12 +109,14 @@ if (isset($_GET['id']) && is_numeric($_GET['id'])) {
                             <tr> 
                                 <th>Reply</th> 
                                 <th>Created at</th> 
+                                <th>Created by</th>
                             </tr>';
 
                     while ($reply_row = mysqli_fetch_assoc($replies_result)) {
                         echo '<tr>';
                         echo '<td class="leftpart">' . $reply_row['post_content'] . '</td>';
                         echo '<td class="rightpart">' . date('d-m-Y', strtotime($reply_row['post_date'])) . '</td>';
+                        echo '<td class="rightpart">' . $reply_row['user_name'] . '</td>';
                         echo '</tr>';
                     }
 
@@ -141,7 +151,6 @@ if (isset($_GET['id']) && is_numeric($_GET['id'])) {
 
 include 'footer.php';
 ?>
-
 
 
 
