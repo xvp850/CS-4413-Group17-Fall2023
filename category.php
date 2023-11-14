@@ -9,7 +9,7 @@ ini_set('display_errors', 1);
 
 if (isset($_GET['id'])) {
     $id = $_GET['id'];
-    echo "Debug: ID = $id<br>";
+    echo "Debug: ID from GET = $id<br>";  // Add this line for debug
     // Select the category based on $_GET['id']
     $sql = "SELECT cat_id, cat_name, cat_description 
             FROM categories 
@@ -33,6 +33,15 @@ if (isset($_GET['id'])) {
                     echo "Category Description: " . $row['cat_description'] . "<br>";
                     echo '<h2>Topics in ′' . $row['cat_name'] . '′ category</h2>';
                 }
+            }
+        }
+    } else {
+        echo "Error in preparing the statement: " . mysqli_error($db_connection);
+    }
+} else {
+    echo "Debug: ID is not set or invalid.<br>";  // Add this line for debug
+    echo "Category ID is not set or invalid.";
+}
 
                 // Query for the topics in the category
                 $sql = "SELECT 
