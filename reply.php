@@ -3,6 +3,9 @@ session_start();
 include 'connect.php';
 include 'header.php';
 
+error_reporting(E_ALL);
+ini_set('display_errors', 1);
+
 if ($_SERVER['REQUEST_METHOD'] != 'POST') {
     // someone is calling the file directly, which we don't want
     echo 'This file cannot be called directly.';
