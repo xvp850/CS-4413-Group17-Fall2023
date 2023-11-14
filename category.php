@@ -10,7 +10,7 @@ ini_set('display_errors', 1);
 if (isset($_GET['id'])) {
     $id = $_GET['id'];
     if (!is_numeric($id) || $id <= 0 || floor($id) != $id) {
-        echo 'Invalid category ID.';
+        echo 'Invalid category ID: ' . htmlspecialchars($id);
         exit;  // Stop execution to prevent further processing
     }
     echo "Debug: ID from GET = $id<br>";  // Add this line for debug
