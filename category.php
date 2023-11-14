@@ -9,7 +9,7 @@ ini_set('display_errors', 1);
 
 if (isset($_GET['id'])) {
     $id = $_GET['id'];
-
+    echo "Debug: ID = $id<br>"
     // Select the category based on $_GET['id']
     $sql = "SELECT cat_id, cat_name, cat_description 
             FROM categories 
