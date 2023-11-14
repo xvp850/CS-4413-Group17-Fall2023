@@ -44,7 +44,7 @@ if (isset($_GET['id'])) {
 }
 
                 // Query for the topics in the category
-                $sql = "SELECT 
+               /* $sql = "SELECT 
                             topic_id, 
                             topic_subject, 
                             topic_date 
