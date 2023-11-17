@@ -25,9 +25,9 @@
 			session_start();
 			
 			if (isset($_SESSION['signed_in']) && $_SESSION['signed_in'] == true) {
-				echo 'Hello, ' . $_SESSION['user_name'] . '. Not you? <a href="signout.php">Sign out</a>';
+				echo 'Hello, ' . $_SESSION['user_name'] . '. Not you? <a href="sign_out.php">Sign out</a>';
 			} else {
-				echo '<a href="signin.php">Sign in</a> or <a href="signup.php">create an account</a>.';
+				echo '<a href="sign_in.php">Sign in</a> or <a href="sign_up.php">create an account</a>.';
 			}
 			?>
         </div>
