@@ -137,6 +137,10 @@ h3 {margin: 0; padding: 0;}
 
 /* Menu styles */
 
+body{
+	background-color: #172435
+}
+
 .item {
 
 	background-color: #144e73;
