@@ -13,7 +13,7 @@
 </head>
 
 <body>
-<h1>My forum</h1>
+<h1><span>My forum</span></h1>
 	<div id="wrapper">
 	<div id="menu">
 		<a class="item" href="index.php">Home</a> -
