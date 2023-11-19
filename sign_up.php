@@ -1,6 +1,5 @@
 <?php
-
-//signup.php
+/* This is the sign_up.php */
 
 include 'connect.php';
 include 'header.php';
@@ -18,7 +17,7 @@ Username: <input type="text" name="user_name" />
 Password: <input type="password" name="user_pass">
 Password again: <input type="password" name="user_pass_check">
 E-mail: <input type="email" name="user_email">
-<input type="submit" value="Add category" />
+<input type="submit" value="Create Account" />
 </form>';
 }
 else

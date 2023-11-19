@@ -2,7 +2,7 @@
 
 </div><!-- wrapper -->
 
-<div id="footer">Created for tutsplus</div>
+<div id="footer">Do we need a footer?</div>
 
 </body>
 
