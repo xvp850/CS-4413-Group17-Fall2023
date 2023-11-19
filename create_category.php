@@ -1,6 +1,8 @@
 <?php
 /* This is create_category.php */
 
+//Maybe make this admin only?
+
 session_start();
 
 include 'connect.php';
