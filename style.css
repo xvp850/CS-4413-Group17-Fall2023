@@ -124,12 +124,11 @@ td {
 h1, #footer {
 
 	font-family: Arial;
-
-	color: #F1F3F1;
+	color: #4c84a7;
 
 }
 h1 span{
-	background-color: lightblue;
+	background-color: #144e73;
 	display: inline-block;
   	width: 200px;
 }
