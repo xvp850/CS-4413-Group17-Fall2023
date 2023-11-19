@@ -49,7 +49,7 @@ body {
 
 	padding: 0 30px;
 
-	background-color: #FFF;
+	background-color: #5288ac;
 
 	text-align: left;
 
@@ -67,7 +67,9 @@ body {
 
 #userbar {
 
-	background-color: #fff;
+	background-color: #5288ac;
+
+	color: #5288ac;
 
 	float: right;
 
