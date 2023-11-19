@@ -130,6 +130,8 @@ h1, #footer {
 }
 h1 span{
 	background-color: lightblue;
+	display: inline-block;
+  	width: 200px;
 }
 
 h3 {margin: 0; padding: 0;}
