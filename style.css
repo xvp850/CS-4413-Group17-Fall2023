@@ -30,7 +30,7 @@ body {
 
 	width: 100%;				/* fill up the entire div */
 
-	margin-right: 20px;
+	margin-left: -31px;
 }
 
 #menu {
@@ -55,7 +55,7 @@ body {
 
 	font-size: 105%;
 
-	margin-left: -31px;
+	margin-right: 20px;
 
 }
 
