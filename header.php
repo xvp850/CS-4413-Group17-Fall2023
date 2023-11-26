@@ -17,16 +17,14 @@
 	<div id="wrapper">
 	<div id="menu">
 		<a class="item" href="index.php">Home</a> -
-		/*
-		<?php
+		<?php /*
 			session_start();
 			if (isset($_SESSION['signed_in']) && $_SESSION['signed_in'] == true && $_SESSION['user_level'] == 1) {
 				echo ' - Admin Functions: <a class="item" href="create_category.php">Create a category</a> -';
 			} else {
 				echo '<a class="item" href="create_topic.php">Create a topic</a>';
 			}
-		?>
-		*/
+		*/ ?>
 		<a class="item" href="create_category.php">Create a category</a> -
 		<a class="item" href="create_topic.php">Create a topic</a>
 		<div id="userbar">
