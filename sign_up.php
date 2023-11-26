@@ -15,6 +15,7 @@ Username: <input type="text" name="user_name" /><br>
 Password: <input type="password" name="user_pass"><br>
 Password again: <input type="password" name="user_pass_check"><br>
 E-mail: <input type="email" name="user_email"><br>
+User level (delete after): <input type="text" name="user_level"><br>
 <br><input type="submit" value="Create Account" /><br>
 </form>';
 }
@@ -69,8 +70,8 @@ else
 	else
 	{
 		//the form has been posted without, so save it
-		//notice the use of mysql_real_escape_string, keep everything safe!
-		//also notice the sha1 function which hashes the password
+		// mysql_real_escape_string for safety
+		// the sha1 function which hashes the password
 		// Prepare the SQL statement with placeholders
 
         $sql = "INSERT INTO users(user_name, user_pass, user_email, user_date, user_level) VALUES (?, ?, ?, NOW(), 0)";
@@ -79,7 +80,7 @@ else
         $stmt = mysqli_prepare($db_connection, $sql);
 
         // Bind parameters to the prepared statement
-        mysqli_stmt_bind_param($stmt, 'sss', $_POST['user_name'], sha1($_POST['user_pass']), $_POST['user_email']);
+        mysqli_stmt_bind_param($stmt, 'sss', $_POST['user_name'], sha1($_POST['user_pass']), $_POST['user_email'], $_POST['user_level']);
 
         // Execute the prepared statement
         $result = mysqli_stmt_execute($stmt);
