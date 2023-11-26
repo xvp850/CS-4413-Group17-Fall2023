@@ -132,3 +132,17 @@ textarea {
 	height: 200px;
 }
 
+.signup-table, form p {
+        display: table;
+        background-color: #bbbbbb;
+}
+
+.signup-cell, form p label {
+	display: table-cell;
+        vertical-align: top;
+}
+
+form p label {
+        width: 100px;
+}
+
