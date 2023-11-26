@@ -10,8 +10,6 @@ echo '<h3>Sign up</h3>';
 
 if($_SERVER['REQUEST_METHOD'] != 'POST')
 {
-    /*the form hasn't been posted yet, display it
-note that the action="" will cause the form to post to the same page it is on */
     echo '<form method="post" action="">
 Username: <input type="text" name="user_name" /><br>
 Password: <input type="password" name="user_pass"><br>
@@ -22,22 +20,17 @@ E-mail: <input type="email" name="user_email"><br>
 }
 else
 {
-    /* so, the form has been posted, we'll process the data in three steps:
-1. Check the data
-2. Let the user refill the wrong fields (if necessary)
-3. Save the data
-*/
 
     $errors = array(); /* declare the array for later use */
 
 	if(isset($_POST['user_name']))
 	{
-		//the user name exists
+		// the user name exists
 		if(!ctype_alnum($_POST['user_name']))
 		{
 			$errors[] = 'The username can only contain letters and digits.';
 		}
-
+		// the user name is longer than 25 characters
 		if(strlen($_POST['user_name']) > 25)
 		{
 			$errors[] = 'The username cannot be longer than 25 characters.';
@@ -67,9 +60,9 @@ else
 		echo 'There are error in the fields and are not filled in correctly.';
 		echo '<ul>';
 
-		foreach($errors as $key => $value) /* walk through the array so all the errors get displayed */
+		foreach($errors as $key => $value) /* Go through the array so all errors get displayed */
 		{
-			echo '<li>' . $value . '</li>'; /* this generates a nice error list */
+			echo '<li>' . $value . '</li>'; /* error list */
 		}
 		echo '</ul>';
 	}
@@ -94,18 +87,16 @@ else
         if(!$result)
 		{
 			//something went wrong, display the error
-			echo 'Something went wrong while registering. Please try again later.';
+			echo 'Boop boop. Something went wrong while registering. Please try again later.';
 			//echo mysqli_error($db_connection); // Display the mysqli error //debugging purposes, uncomment when needed
 		}
 		else
 		{
-			echo 'Successfully registered. You can now <a href="signin.php">sign in</a> and start sharing your most intimate and unwanted thoughts!';
+			echo 'Successfully registered. You can now <a href="sign_in.php">sign in</a> and start sharing your most intimate and unwanted thoughts!'; //Why
 		}
 	}
 }
 
 include 'footer.php';
-
 ?>
-
 
