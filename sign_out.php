@@ -13,7 +13,7 @@ if (isset($_SESSION['signed_in']) && $_SESSION['signed_in'] == true) {
     session_destroy();
     echo 'Goodbye onii-chan. You are signed out, you can <a href="sign_in.php">sign in</a> again if you want.';
 } else {
-    echo 'You are already signed out, you can <a href="sign_out.php">sign out</a> if you want.';
+    echo 'Baka. You are already signed out, you can <a href="sign_in.php">sign in</a> if you want.';
 }
 
 include 'footer.php';
