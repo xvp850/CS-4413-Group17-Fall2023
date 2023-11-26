@@ -10,14 +10,13 @@ echo '<h3>Sign up</h3>';
 
 if($_SERVER['REQUEST_METHOD'] != 'POST')
 {
-    echo '<div class="pseudo-table">
-    	<div class="pseudo-cell"><form method="post" action="">
-	<p>Username: <input type="text" name="user_name" /></p><br>
-	<p>Password: <input type="password" name="user_pass"></p><br>
-	<p>Password again: <input type="password" name="user_pass_check"></p><br>
-	<p>E-mail: <input type="email" name="user_email"></p><br>
+    echo '<form method="post" action="">
+	Username: <input type="text" name="user_name" /><br>
+	Password: <input type="password" name="user_pass"><br>
+	Password again: <input type="password" name="user_pass_check"><br>
+	E-mail: <input type="email" name="user_email"><br>
 	<br><input type="submit" value="Create Account" /><br>
-	</form></div></div>';
+	</form>';
 }
 else
 {
