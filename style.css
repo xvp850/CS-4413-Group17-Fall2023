@@ -1,17 +1,11 @@
 body {
-
-    background-color: #4E4E4E;
-
-	text-align: center;			/* make sure IE centers the page too */
-
+	background-color: #4E4E4E;
+	text-align: center; /* make sure IE centers the page too */
 }
 
 #wrapper {
-
 	width: 900px;
-
-	margin: 0 auto; 			/* center the page */
-
+	margin: 0 auto; /* center the page */
 }
 
 #content {
