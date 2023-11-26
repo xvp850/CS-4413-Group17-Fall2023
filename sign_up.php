@@ -15,7 +15,7 @@ Username: <input type="text" name="user_name" /><br>
 Password: <input type="password" name="user_pass"><br>
 Password again: <input type="password" name="user_pass_check"><br>
 E-mail: <input type="email" name="user_email"><br>
-User level (delete after): <input type="text" name="user_level"><br>
+User level (delete after): <input type="number" name="user_level"><br>
 <br><input type="submit" value="Create Account" /><br>
 </form>';
 }
