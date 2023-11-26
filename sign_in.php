@@ -9,7 +9,7 @@ ini_set('display_errors', 1);
 echo '<h3>Sign in</h3>';
 
 if (isset($_SESSION['signed_in']) && $_SESSION['signed_in'] == true) {
-    echo 'You are already signed in, you can <a href="signout.php">sign out</a> if you want.';
+    echo 'You are already signed in, you can <a href="sign_out.php">sign out</a> if you want.';
 } else {
     if ($_SERVER['REQUEST_METHOD'] != 'POST') {
         echo '<form method="post" action="">
