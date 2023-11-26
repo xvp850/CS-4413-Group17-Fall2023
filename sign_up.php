@@ -10,14 +10,14 @@ echo '<h3>Sign up</h3>';
 
 if($_SERVER['REQUEST_METHOD'] != 'POST')
 {
-    echo '<form method="post" action="">
-Username: <input type="text" name="user_name" /><br>
-Password: <input type="password" name="user_pass"><br>
-Password again: <input type="password" name="user_pass_check"><br>
-E-mail: <input type="email" name="user_email"><br>
-User level (delete after): <input type="number" name="user_level"><br>
-<br><input type="submit" value="Create Account" /><br>
-</form>';
+    echo '<div class="pseudo-table">
+    	<div class="pseudo-cell"><form method="post" action="">
+	<p>Username: <input type="text" name="user_name" /></p><br>
+	<p>Password: <input type="password" name="user_pass"></p><br>
+	<p>Password again: <input type="password" name="user_pass_check"></p><br>
+	<p>E-mail: <input type="email" name="user_email"></p><br>
+	<br><input type="submit" value="Create Account" /><br>
+	</form></div></div>';
 }
 else
 {
@@ -80,7 +80,7 @@ else
         $stmt = mysqli_prepare($db_connection, $sql);
 
         // Bind parameters to the prepared statement
-        mysqli_stmt_bind_param($stmt, 'sss', $_POST['user_name'], sha1($_POST['user_pass']), $_POST['user_email'], $_POST['user_level']);
+        mysqli_stmt_bind_param($stmt, 'sss', $_POST['user_name'], sha1($_POST['user_pass']), $_POST['user_email']);
 
         // Execute the prepared statement
         $result = mysqli_stmt_execute($stmt);
