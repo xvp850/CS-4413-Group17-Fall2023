@@ -27,6 +27,12 @@
 		*/ ?>
 		<a class="item" href="create_category.php">Create a category</a> -
 		<a class="item" href="create_topic.php">Create a topic</a>
+		<?php
+			session_start();
+			if (isset($_SESSION['signed_in']) && $_SESSION['signed_in'] == true) {
+				echo '- <a class="item" href="user_profile.php">User Profile</a>';
+			}
+		?>
 		<div id="userbar">
         <div id="userbar">
 			<?php
