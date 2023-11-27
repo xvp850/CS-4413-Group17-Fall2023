@@ -11,7 +11,7 @@
 </head>
 
 <body>
-<h1><span><img src="https://staticdelivery.nexusmods.com/mods/3946/images/headers/1106_1679123181.jpg"></span></h1>
+<h2><span><img src="https://staticdelivery.nexusmods.com/mods/3946/images/headers/1106_1679123181.jpg"></span></h2>
 	<div id="wrapper">
 	<div id="menu">
 		<a class="item" href="index.php">Home</a> -
