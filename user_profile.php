@@ -5,9 +5,7 @@ include 'header.php';
 
 			
 if (isset($_SESSION['signed_in']) && $_SESSION['signed_in'] == true) {
-    echo '<tr> 
-    <th>User</th> 
-    </tr>';
+    echo '<tr><th>User</th></tr>';
     
     echo '<tr>';
             echo '<td class="leftpart">';
