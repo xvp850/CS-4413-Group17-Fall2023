@@ -14,8 +14,8 @@ if (mysqli_connect_errno())
     exit();
 }
 
-echo "database connection success<br>";
-echo "<strong>now showing results from a database query...</strong>";
+//echo "database connection success<br>";
+//echo "<strong>now showing results from a database query...</strong>";
 
 // Select database
 if (!mysqli_select_db($db_connection, $database)) {
