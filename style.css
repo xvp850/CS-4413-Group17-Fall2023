@@ -88,6 +88,7 @@ h2 span{
 	background-color: #144e73;
 	text-align: center;
 	display: flex;
+      	justify-content: center;
   	width: 200px;
 }
 
