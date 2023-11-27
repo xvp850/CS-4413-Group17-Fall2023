@@ -17,6 +17,7 @@ if (isset($_SESSION['signed_in']) && $_SESSION['signed_in'] == true) {
         Password: <input type="password" name="user_pass">
         <input type="submit" value="Sign in" />
         </form>';
+        echo 'Click here if you <a href="forgot_password.php">forgot your password.</a>';
     } else {
         $errors = array();
 
