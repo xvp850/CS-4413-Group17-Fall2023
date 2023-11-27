@@ -9,7 +9,8 @@ if (isset($_SESSION['signed_in']) && $_SESSION['signed_in'] == true) {
     
     echo '<tr>';
             echo '<td class="leftpart">';
-            echo '<h3>.$_SESSION['user_name'].</h3></td>';
+	    //echo 'Welcome, ' . $_SESSION['user_name'] . '. <a href="index.php">Proceed to the forum overview</a>.';
+            echo '<h3>'.$_SESSION['user_name'].'</h3></td>';
     echo '</tr>';
 }
 	    
