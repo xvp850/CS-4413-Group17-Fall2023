@@ -6,8 +6,8 @@ include 'header.php';
 			
 if (isset($_SESSION['signed_in']) && $_SESSION['signed_in'] == true) {
 
-    echo'$_SESSION['user_id']';
-    echo'$_SESSION['user_name']';
+    echo'.$_SESSION['user_name'].';
+}
 	    
 include 'footer.php';
 ?>
