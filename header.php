@@ -12,6 +12,7 @@
 
 <body>
 <h2><span><img src="https://staticdelivery.nexusmods.com/mods/3946/images/headers/1106_1679123181.jpg"></span></h2>
+<h2><span>CS-4413-Group17-Fall2023</span></h2>
 	<div id="wrapper">
 	<div id="menu">
 		<a class="item" href="index.php">Home</a> -
