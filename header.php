@@ -1,19 +1,17 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
-
 "https://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
-
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="nl" lang="nl">
 
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-	<meta name="description" content="A short description." />
-	<meta name="keywords" content="put, keywords, here" />
-	<title>PHP-MySQL forum</title>
+	<meta name="description" content="description" />
+	<meta name="keywords" content="keywords" />
+	<title>CS-4413-Group17-Fall2023</title>
 	<link rel="stylesheet" href="style.css" type="text/css">
 </head>
 
 <body>
-<h1><span>My forum</span></h1>
+<h1><span><img>https://staticdelivery.nexusmods.com/mods/3946/images/headers/1106_1679123181.jpg</img></span></h1>
 	<div id="wrapper">
 	<div id="menu">
 		<a class="item" href="index.php">Home</a> -
