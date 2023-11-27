@@ -94,6 +94,7 @@ h2 span{
 	*/
 	display: grid;
      	place-items: center;
+	text-color: white;
 }
 
 h3 {margin: 0; padding: 0;}
