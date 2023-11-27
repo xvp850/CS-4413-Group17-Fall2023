@@ -11,7 +11,7 @@ if (isset($_SESSION['signed_in']) && $_SESSION['signed_in'] == true) {
     
     echo '<tr>';
             echo '<td class="leftpart">';
-            echo '<h3> . $_SESSION['user_name'] . </h3>';
+            echo '<h3>.$_SESSION['user_name'].</h3>';
             echo '</td>';
     echo '</tr>';
 }
