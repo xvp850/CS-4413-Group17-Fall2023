@@ -84,6 +84,12 @@ h1 span{
   	width: 200px;
 }
 
+h2 span{
+	background-color: #144e73;
+	display: flex;
+  	width: 200px;
+}
+
 h3 {margin: 0; padding: 0;}
 
 /* Menu styles */
