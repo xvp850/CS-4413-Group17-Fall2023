@@ -2,7 +2,7 @@
 
 </div><!-- wrapper -->
 
-<div id="footer">Do we need a footer?</div>
+<div id="footer"></div>
 
 </body>
 
