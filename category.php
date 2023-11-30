@@ -13,7 +13,7 @@ if (isset($_GET['id'])) {
         echo 'Invalid category ID: ' . htmlspecialchars($id);
         exit;  // Stop execution to prevent further processing
     }
-    echo "Debug: ID from GET = $id<br>";  // Add this line for debug
+    //echo "Debug: ID from GET = $id<br>";  // Add this line for debug
     // Select the category based on $_GET['id']
     $sql = "SELECT cat_id, cat_name, cat_description 
             FROM categories 
@@ -32,10 +32,10 @@ if (isset($_GET['id'])) {
                 echo 'This category does not exist.';
             } else {
                 while ($row = mysqli_fetch_assoc($result_category)) {
-                    echo "Category ID: " . $row['cat_id'] . "<br>";
-                    echo "Category Name: " . $row['cat_name'] . "<br>";
-                    echo "Category Description: " . $row['cat_description'] . "<br>";
-                    echo '<h2>Topics in ′' . $row['cat_name'] . '′ category</h2>';
+                //    echo "Category ID: " . $row['cat_id'] . "<br>";
+                //    echo "Category Name: " . $row['cat_name'] . "<br>";
+                //    echo "Category Description: " . $row['cat_description'] . "<br>";
+                //    echo '<h2>Topics in ′' . $row['cat_name'] . '′ category</h2>';
                 }
             }
 
