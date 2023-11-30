@@ -89,7 +89,8 @@ if (isset($_GET['id'])) {
 } else {
     echo "Category ID is not set.";
 }
+echo '</body>';
 
 include 'footer.php';
-echo '</body>';
+
 ?>
