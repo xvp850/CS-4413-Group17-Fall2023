@@ -35,7 +35,7 @@ if (isset($_GET['id'])) {
                 //    echo "Category ID: " . $row['cat_id'] . "<br>";
                 //    echo "Category Name: " . $row['cat_name'] . "<br>";
                 //    echo "Category Description: " . $row['cat_description'] . "<br>";
-                //    echo '<h2>Topics in ′' . $row['cat_name'] . '′ category</h2>';
+                    echo '<h2>Topics in ′' . $row['cat_name'] . '′ category</h2>';
                 }
             }
 
