@@ -6,7 +6,7 @@ include 'header.php';
 // first select the category based on $_GET['cat_id'] 
 error_reporting(E_ALL);
 ini_set('display_errors', 1);
-
+echo '<body>';
 if (isset($_GET['id'])) {
     $id = $_GET['id'];
     if (!is_numeric($id) || $id <= 0 || floor($id) != $id) {
@@ -91,4 +91,5 @@ if (isset($_GET['id'])) {
 }
 
 include 'footer.php';
+echo '</body>';
 ?>
