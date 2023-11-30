@@ -44,6 +44,7 @@
 			}
 			?>
         </div>
-		</div>
+	</div>
+		<div id="content">
 
 	</body>
