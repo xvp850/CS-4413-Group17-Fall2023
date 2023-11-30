@@ -45,12 +45,13 @@ body {
 }
 
 #footer {
-	position: relative;
+	position:absolute;
+    	width:100%;
+    	bottom:0px;
   	left: 0;
-  	bottom: 0;
-  	width: 100%;
   	color: white;
   	text-align: center;
+	margin-bottom: -30px;
 }
 
 /* begin table styles */
